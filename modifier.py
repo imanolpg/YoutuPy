@@ -8,14 +8,14 @@ except ModuleNotFoundError:
     os.system("python3 -m pip install mutagen")
 
 if input("Manage songs metadata?: ") == "y":
-    files = os.listdir("./canciones")
+    files = os.listdir("./songs")
     counter = 1
     for file in files:
         if file[0] == ".":
             pass
         else:
             try:
-                song = EasyID3("./canciones/" + file)
+                song = EasyID3("./songs/" + file)
                 file_split = file.split(".")
                 file = ""
                 for part in file_split[0: len(file_split) - 1]:
