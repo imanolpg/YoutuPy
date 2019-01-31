@@ -1,3 +1,6 @@
+from pydub import AudioSegment
+from pytube.helpers import safe_filename
+from pytube import YouTube
 import os
 import ssl
 
@@ -10,8 +13,12 @@ try:
 except ModuleNotFoundError:
     os.system("python3 -m pip install pytube")
     os.system("python3 -m pip install pyfiglet")
-    from pytube import YouTube
-    from pytube.helpers import safe_filename
+
+try:
+    from pydub import AudioSegment
+except ModuleNotFoundError:
+    os.system("python3 -m pip install pydyb")
+
 
 os.system("figlet YoutuPy")
 videos = open("videos.txt").readlines()
@@ -27,8 +34,7 @@ for line in videos:
         print(title)
         a = yt.streams.filter(progressive=True, file_extension="mp4").all()
         a[0].download()
-        command = "ffmpeg -i \'" + title + ".mp4\' \'" + title + ".mp3\' >/dev/null 2>&1"
-        os.system(command)
+        AudioSegment.from_file(title + ".mp4").export(title + ".mp3", format="mp3")
     except:
         failed_videos = open("failed_videos.txt", "a")
         failed_videos.write(video)
