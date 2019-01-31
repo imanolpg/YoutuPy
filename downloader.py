@@ -35,6 +35,12 @@ for line in videos:
         failed_videos.close()
         print("Error in video: " + str(counter) + " | Link --> failed_videos.txt")
 os.system("mv -f *.mp3 songs >/dev/null 2>&1")
-os.system("rm -f *.mp4 >/dev/null 2>&1")
+print("Songs moved to \"songs\" folder")
+if input("Do you want to keep all videos?: ") in ["Y", "y", "yes", "YES", "Yes"]:
+    os.system("mv -f *.mp4 videos >/dev/null 2>&1")
+    print("Videos moved to \"videos\" folder")
+else:
+    os.system("rm -f *.mp4 >/dev/null 2>&1")
+    print("All videos deleted")
 print("------Finished------")
 print("Change songs property with modifier.py\n")
