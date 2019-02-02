@@ -63,7 +63,7 @@ elif os.name == "nt":
         os.system("del *.mp4")
         print("All videos deleted")
 else:
-    print("Your system is not supported. The YutuPy is unable to move videos and songs")
+    print("Your system is not supported. YutuPy is unable to move videos and songs")
 
 print("------Finished------")
 print("Change songs property with modifier.py\n")
