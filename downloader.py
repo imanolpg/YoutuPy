@@ -1,6 +1,3 @@
-from pydub import AudioSegment
-from pytube.helpers import safe_filename
-from pytube import YouTube
 import os
 import ssl
 
@@ -65,6 +62,8 @@ elif os.name == "nt":
     else:
         os.system("del *.mp4")
         print("All videos deleted")
+else:
+    print("Your system is not supported. The YutuPy is unable to move videos and songs")
 
 print("------Finished------")
 print("Change songs property with modifier.py\n")
